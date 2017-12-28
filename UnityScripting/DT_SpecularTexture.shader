@@ -14,6 +14,8 @@ Properties
 		CGPROGRAM
 		// include the lambert shader here
 		#pragma surface surf BlinnPhong
+		#pragma exclude_renderers flash
+		
 		struct Input
 		{
 			float2 uv_MainTex; // (1.0, 1,0) U, V
@@ -37,7 +39,7 @@ Properties
 			o.Albedo = tex2D(_MainTex, IN.uv_MainTex).rgb;
 			o.Normal = UnpackNormal(tex2D(_BumpMap, IN.uv_BumpMap));
 			o.Specular = _SpecPower;
-			o.Gloss = specTex.rgb;
+			o.Gloss = specTex.rgb;	
 			
 		}
 		ENDCG
